@@ -69,15 +69,14 @@ To get a local copy up and running follow these simple steps.
 
 This is an example of how to list things you need to use the software and how to install them.
 
-```sh
-git clone 
-```
+* [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git/)
+* [CMake](https://cmake.org/install/)
 
 ### Installation
  
 1. Clone the repo
 ```sh
-git clone https://github.com/github_username/repo.git
+git clone https://github.com/csivitu/yaml-parser.git
 ```
 2. Craete a ``build`` folder
 ```sh
