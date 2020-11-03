@@ -54,8 +54,8 @@ Here's a blank template to get started:
 
 ### Built With
 
-* []()
-* []()
+* [C++]()
+* [CMake](https://cmake.org/)
 * []()
 
 
@@ -68,9 +68,9 @@ To get a local copy up and running follow these simple steps.
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* npm
+
 ```sh
-npm install npm@latest -g
+git clone 
 ```
 
 ### Installation
@@ -79,9 +79,17 @@ npm install npm@latest -g
 ```sh
 git clone https://github.com/github_username/repo.git
 ```
-2. Install NPM packages
+2. Craete a ``build`` folder
 ```sh
-npm install
+mkdir build && cd build
+```
+3. Generate the CMake build files
+```sh
+cmake .. 
+```
+4. Build the project
+```sh
+make && sudo make install
 ```
 
 
