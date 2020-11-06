@@ -10,6 +10,9 @@ file(GLOB SOURCES "src/*.cpp")
 
 add_library(yaml-parser STATIC ${SOURCES})
 add_executable(yamlparser ${SOURCES})
+
+set_target_properties(yaml-parser PROPERTIES PUBLIC_HEADER "./include/YamlParser.hpp")
+
 if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -Wall -Wextra -pedantic")
 endif ()
@@ -27,5 +30,6 @@ SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} ${GCC_COVERAGE_LINK_FLAGS
 set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}/bin")
 
 install(TARGETS yaml-parser
-    DESTINATION ${CMAKE_INSTALL_PREFIX}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}
+    PUBLIC_HEADER DESTINATION /usr/include
     )
