@@ -1,17 +1,22 @@
 cmake_minimum_required (VERSION 3.10)
 project (yaml-parser)  # change name as required
 
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 include_directories(include)
 
 file(GLOB SOURCES "src/*.cpp")
 
 add_library(yaml-parser STATIC ${SOURCES})
-
+add_executable(yamlparser ${SOURCES})
 if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -O2 -Wall -Wextra -pedantic -lyaml-cpp")
+    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -Wall -Wextra -pedantic")
 endif ()
 
 set(CMAKE_INSTALL_PREFIX /usr/lib/x86_64-linux-gnu)
+
+
 
 SET(GCC_COVERAGE_COMPILE_FLAGS "")
 SET(GCC_COVERAGE_LINK_FLAGS    "")

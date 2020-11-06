@@ -47,6 +47,11 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
+The aim of this project is to write a C++ YAML Parser with :
+- No external dependencies, just C++11
+- Easy to follow documentation and examples
+- 
+
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
 `github_username`, `repo`, `twitter_handle`, `email`
