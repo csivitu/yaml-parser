@@ -6,6 +6,11 @@
 #include <string>
 namespace YamlParser
 {
+    enum class valueType
+    {
+        STRING,
+        ARRAY
+    };
 
     template <class T>
     class YamlNode
@@ -14,6 +19,8 @@ namespace YamlParser
         std::string key;
         // std::string value;
         std::vector<T> value;
+
+        inline valueType getValueType();
     };
 
 } // namespace YamlParser
