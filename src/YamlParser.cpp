@@ -1,8 +1,8 @@
 #include "YamlParser.hpp"
-
+#include "YamlNode.hpp"
 namespace YamlParser
 {
-    YamlParser::YamlParser(const char *_fileName, int indentation = 2)
+    YamlParser::YamlParser(const char *_fileName, int indentation)
     {
 
         this->indentation_spacing = indentation;
@@ -27,15 +27,23 @@ namespace YamlParser
     void YamlParser::parse()
     {
         std::string line;
+        int collections = 0;
+        
+        YamlNode<int> yn;
+        
         std::cout << "parsing\n";
+
         while (std::getline(fin, line))
         {
             if (line[0] == '-')
             {
                 std::cout << "start\t";
+                collections++;
             }
             std::cout << line << "\n";
         }
+
+        std::cout << "Collections: " << collections << "\n";
     }
 
     bool YamlParser::file_exists(const char *fileName)

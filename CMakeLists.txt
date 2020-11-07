@@ -19,8 +19,6 @@ endif ()
 
 set(CMAKE_INSTALL_PREFIX /usr/lib/x86_64-linux-gnu)
 
-
-
 SET(GCC_COVERAGE_COMPILE_FLAGS "")
 SET(GCC_COVERAGE_LINK_FLAGS    "")
 

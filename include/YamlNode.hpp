@@ -9,6 +9,8 @@ namespace YamlParser
     enum class valueType
     {
         STRING,
+        INT,
+        FLOAT,
         ARRAY
     };
 
@@ -19,6 +21,8 @@ namespace YamlParser
         std::string key;
         // std::string value;
         std::vector<T> value;
+        
+        std::vector<YamlNode> children;
 
         inline valueType getValueType();
     };
