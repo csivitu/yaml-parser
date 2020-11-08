@@ -4,7 +4,7 @@
 int main()
 {
     
-    YamlParser::YamlParser yaml("./sample.yml");
+    YamlParser::YamlParser yaml("./sample2.yml");
     yaml.parse();
     return 0;
 }

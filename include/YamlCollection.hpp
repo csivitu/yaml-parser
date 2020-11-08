@@ -5,10 +5,20 @@
 #include <vector>
 #include <string>
 
+#include "YamlNode.hpp"
 namespace YamlParser
 {
 
-   
+        
+    class YamlCollection
+    {
+    public:
+        YamlCollection();
+
+    private:
+        std::vector<YamlNode>  nodes;
+    };
+
 } // namespace YamlParser
 
 #endif

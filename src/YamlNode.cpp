@@ -2,10 +2,22 @@
 
 namespace YamlParser
 {
-    template <class T>
-    YamlParser::valueType YamlNode<T>::getValueType()
+
+    void YamlNode::setNode(const std::string &key, const std::string &value)
     {
-        return value.size() > 0 ? valueType::STRING : valueType::ARRAY;
+        this->_key = key;
+        this->_value = value;
     }
 
+    YamlParser::valueType YamlNode::getValueType()
+    {
+        // TODO: Check if array then check for type of array
+        // TODO: If not array, check for type of number
+        return valueType::FLOAT;
+    }
+    YamlNode::YamlNode()
+    {
+        this->_key = "";
+        this->_value = "";
+    }
 } // namespace YamlParser

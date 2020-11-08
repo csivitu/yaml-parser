@@ -3,6 +3,7 @@
 #define YAML_NODE_H
 
 #include <vector>
+#include <map>
 #include <string>
 namespace YamlParser
 {
@@ -11,20 +12,24 @@ namespace YamlParser
         STRING,
         INT,
         FLOAT,
-        ARRAY
+        STRING_ARRAY,
+        INT_ARRAY,
+        FLOAT_ARRAY
     };
 
-    template <class T>
     class YamlNode
     {
     public:
-        std::string key;
-        // std::string value;
-        std::vector<T> value;
-        
+        YamlNode();
+       void setNode(const std::string& , const std::string&);
+
         std::vector<YamlNode> children;
 
         inline valueType getValueType();
+
+    private:
+        std::string _key;
+        std::string _value;
     };
 
 } // namespace YamlParser
