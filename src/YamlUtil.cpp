@@ -3,7 +3,7 @@
 namespace YamlParser
 {
 
-void split(const std::string &str, const std::string &delim, std::vector<std::string> &parts)
+    void split(const std::string &str, const std::string &delim, std::vector<std::string> &parts)
     {
         /**accepts a string which is a line from the file and splits it using the delimiter
     and stores the individual fields in a vector of type string */
@@ -25,5 +25,19 @@ void split(const std::string &str, const std::string &delim, std::vector<std::st
                 parts.push_back(std::string(str, start, end - start));
             }
         }
+    }
+
+    std::string &rtrim(std::string &s)
+    {
+        s.erase(std::find_if(s.rbegin(), s.rend(),
+                             std::not1(std::ptr_fun<int, int>(std::isspace)))
+                    .base(),
+                s.end());
+        return s;
+    }
+
+    bool searchStringForChar(const char *searchString, const char searchChar)
+    {
+        return strchr(searchString, searchChar);
     }
 } // namespace YamlParser
