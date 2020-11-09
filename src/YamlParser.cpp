@@ -36,12 +36,24 @@ namespace YamlParser
         {
 
             // if (searchStringForChar(line.c_str(), ':'))
-            std::vector<std::string> vec;
-            split(line, ":", vec);
+            // std::vector<std::string> vec;
+            // split(line, ":", vec);
             const std::string s = rtrim(line);
-            if (s.at(s.size() - 1) == ':')
+            if (s.size() == 0)
+                continue;
+            // std::cout << s.at(s.size() - 1) << "\n";
+            switch (s.at(s.size() - 1))
             {
-                std::cout << line << "\n";
+            case ':':
+                std::cout << "Block indent: " << s.substr(0, s.find_first_of(":")) << "\n";
+                break;
+
+            default:
+                std::vector<std::string> vec;
+                split(line, ":", vec);
+                // std::cout << "size: " << vec.size() << "\n";
+                std::cout << vec.at(0) << " : " << vec.at(1) << "\n";
+                break;
             }
         }
 
