@@ -17,15 +17,41 @@ namespace YamlParser
         FLOAT_ARRAY
     };
 
+        template <class T>
+    class TestNode
+    {
+    private:
+        std::string key;
+        
+        std::vector<T> values;
+    };
+
     class YamlNode
     {
     public:
         YamlNode();
-       void setNode(const std::string& , const std::string&);
+        void setNode(const std::string &, const std::string &);
+        inline valueType getValueType();
+        void clear();
+        void addChild(const YamlNode node);
+
+        std::string getKey();
+        std::string getValue();
+
+        bool valueIsArray;
+        bool hasChildren;
+        int indent;
+
+        // TODO: print document function
+        void printYaml();
+
+        // TODO: overload << operator for cout
+
+        // TODO: function for yaml validation
+
+        // TODO: overload [] operator
 
         std::vector<YamlNode> children;
-
-        inline valueType getValueType();
 
     private:
         std::string _key;

@@ -19,5 +19,31 @@ namespace YamlParser
     {
         this->_key = "";
         this->_value = "";
+        hasChildren = false;
+        valueIsArray = false;
+        this->indent = 0;
+    }
+
+    void YamlNode::addChild(YamlNode node)
+    {
+        children.push_back(node);
+    }
+
+    void YamlNode::clear()
+    {
+        this->_key = "";
+        this->_value = "";
+        this->hasChildren = false;
+        this->valueIsArray = false;
+    }
+
+    std::string YamlNode::getKey()
+    {
+        return this->_key;
+    }
+
+    std::string YamlNode::getValue()
+    {
+        return this->_value;
     }
 } // namespace YamlParser
