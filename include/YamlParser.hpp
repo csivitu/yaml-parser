@@ -10,7 +10,7 @@
 #include <stdio.h>
 
 #include "YamlNode.hpp"
-#include "YamlCollection.hpp"
+
 // #include "YamlUtil.hpp"
 namespace YamlParser
 {
