@@ -31,14 +31,12 @@ namespace YamlParser
         int collections = 0;
 
         std::cout << "parsing\n";
-        YamlNode root;
-        YamlNode node;
 
         while (std::getline(fin, line))
         {
-            node.clear();
+
             const std::string s = rtrim(line);
-            
+
             if (s.size() == 0 || s.at(0) == '#')
                 continue;
 
@@ -49,19 +47,14 @@ namespace YamlParser
                 break;
 
             default:
-                std::vector<std::string> vec;
-                split(line, ":", vec);
+
                 // std::cout << "size: " << vec.size() << "\n";
-                node.setNode(vec.at(0), vec.at(1));
-                root.addChild(node);
-                std::cout << vec.at(0) << " : " << vec.at(1) << "|\n";
+
                 break;
             }
         }
         try
         {
-            auto node = root.children.at(0);
-            std::cout << "Key is " <<node.getKey()<< "and value is "<<node.getValue() << "\n";
         }
         catch (...)
         {

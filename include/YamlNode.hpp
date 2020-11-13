@@ -1,63 +1,40 @@
 #pragma once
-#ifndef YAML_NODE_H
-#define YAML_NODE_H
 
 #include <vector>
 #include <map>
 #include <string>
+#include <memory>
 namespace YamlParser
 {
-    enum class valueType
-    {
-        STRING,
-        INT,
-        FLOAT,
-        STRING_ARRAY,
-        INT_ARRAY,
-        FLOAT_ARRAY
-    };
+    class _nodeValue;
+    class YamlNode;
 
-        template <class T>
-    class TestNode
+    enum class YamlNodeType
     {
-    private:
-        std::string key;
-        
-        std::vector<T> values;
+        MAP,
+        SCALAR,
+        VECTOR
     };
 
     class YamlNode
     {
-    public:
-        YamlNode();
-        void setNode(const std::string &, const std::string &);
-        inline valueType getValueType();
-        void clear();
-        void addChild(const YamlNode node);
-
-        std::string getKey();
-        std::string getValue();
-
-        bool valueIsArray;
-        bool hasChildren;
-        int indent;
-
-        // TODO: print document function
-        void printYaml();
-
-        // TODO: overload << operator for cout
-
-        // TODO: function for yaml validation
-
-        // TODO: overload [] operator
-
-        std::vector<YamlNode> children;
-
     private:
-        std::string _key;
-        std::string _value;
+        std::unique_ptr<_nodeValue> value;
+
+    public:
+        // _nodeValue *value;
+
+        inline YamlNodeType getNodeType();
+        // function to return value
+    };
+
+    class _nodeValue
+    {
+    public:
+        std::unique_ptr<std::map<std::string, YamlNode>> _map;
+        std::unique_ptr<std::vector<YamlNode>> _collection;
+        std::string scalar;
+        // string , number or a float
     };
 
 } // namespace YamlParser
-
-#endif
