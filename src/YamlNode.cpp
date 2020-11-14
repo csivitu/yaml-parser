@@ -19,11 +19,16 @@ namespace YamlParser
         switch (this->getNodeType())
         {
         case YamlNodeType::SCALAR:
-            
+            /**
+             * If current node is of type SCALAR, we need to convert the current node 
+             * into type VECTOR and create a new node who's child will be _child
+             * */
             break;
 
         case YamlNodeType::VECTOR:
-
+            /**
+             * If current node is type VECTOR, then we append _child
+            */
             break;
 
         case YamlNodeType::MAP:
