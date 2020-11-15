@@ -25,7 +25,8 @@ namespace YamlParser
         // _nodeValue *value;
 
         inline YamlNodeType getNodeType();
-        // function to return value
+        void addChild(const YamlNode &_child);
+        YamlNode getChildren();
     };
 
     class _nodeValue
@@ -34,7 +35,6 @@ namespace YamlParser
         std::unique_ptr<std::map<std::string, YamlNode>> _map;
         std::unique_ptr<std::vector<YamlNode>> _collection;
         std::string scalar;
-        // string , number or a float
     };
 
 } // namespace YamlParser
