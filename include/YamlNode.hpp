@@ -24,6 +24,12 @@ namespace YamlParser
     public:
         // _nodeValue *value;
 
+        YamlNode operator[](std::string const &obj);
+       
+
+        YamlNode operator=(std::string const &obj);
+       
+
         inline YamlNodeType getNodeType();
         void addChild(const YamlNode &_child);
         YamlNode getChildren();

@@ -40,7 +40,34 @@ namespace YamlParser
             break;
         };
     }
+    YamlNode YamlNode::operator[](std::string const &obj)
+    {
+        /**
+             * if indexing a SCALAR, it should throw an error
+             * if indexing a VECTOR, it should take the index of the number (check if index is number)
+             * if index is string, we consider it a map and find the value using it as key
+             * 
+             * 
+            * */
+    }
 
+    YamlNode YamlNode::operator=(std::string const &obj)
+    {
+        if (this->getNodeType() == YamlNodeType::MAP)
+        {
+            throw VectorNodeAssignmentError();
+        }
+        else if (this->getNodeType() == YamlNodeType::VECTOR)
+        {
+            throw MapNodeAssignmentError();
+        }
+        /** ONLY FOR SCALARS
+             * if map or collection, it should free up the map or collection and
+             * assign the scalar 
+             * 
+             * IF anything else, throw error
+             * */
+    }
     YamlNode YamlNode::getChildren()
     {
         // return this->value;
