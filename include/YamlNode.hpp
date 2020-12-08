@@ -19,9 +19,9 @@ namespace YamlParser
     class YamlNode
     {
     private:
-        std::unique_ptr<_nodeValue> value;
 
     public:
+        std::unique_ptr<_nodeValue> value;
         // _nodeValue *value;
 
         YamlNode operator[](std::string const &obj);
