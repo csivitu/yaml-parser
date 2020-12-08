@@ -19,27 +19,27 @@ namespace YamlParser
     class YamlNode
     {
     private:
-
     public:
-        std::unique_ptr<_nodeValue> value;
+        std::shared_ptr<_nodeValue> value;
         // _nodeValue *value;
 
         YamlNode operator[](std::string const &obj);
-       
 
         YamlNode operator=(std::string const &obj);
-       
 
         inline YamlNodeType getNodeType();
-        void addChild(const YamlNode &_child);
-        YamlNode getChildren();
     };
 
     class _nodeValue
     {
     public:
-        std::unique_ptr<std::map<std::string, YamlNode>> _map;
-        std::unique_ptr<std::vector<YamlNode>> _collection;
+        explicit _nodeValue();
+        _nodeValue(const _nodeValue &) = delete;
+        _nodeValue &operator=(const _nodeValue &) = delete;
+        ~_nodeValue() = default;
+
+        std::shared_ptr<std::map<std::string, YamlNode>> _map;
+        std::shared_ptr<std::vector<YamlNode>> _collection;
         std::string scalar;
     };
 

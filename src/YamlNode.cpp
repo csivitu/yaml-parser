@@ -1,5 +1,6 @@
 #include "YamlNode.hpp"
 #include "YamlException.hpp"
+#include "YamlUtil.hpp"
 namespace YamlParser
 {
 
@@ -12,34 +13,6 @@ namespace YamlParser
         else
             return YamlNodeType::SCALAR;
     }
-
-    void YamlNode::addChild(const YamlNode &_child)
-    {
-
-        switch (this->getNodeType())
-        {
-        case YamlNodeType::SCALAR:
-            /**
-             * If current node is of type SCALAR, we need to convert the current node 
-             * into type VECTOR and create a new node who's child will be _child
-             * */
-            break;
-
-        case YamlNodeType::VECTOR:
-            /**
-             * If current node is type VECTOR, then we append _child
-            */
-            break;
-
-        case YamlNodeType::MAP:
-            /**
-             * If it contains only a single SCALAR:SCALAR mapping and we add a child,
-             * We must convert this current YamlNode into type VECTOR
-             * 
-             * */
-            break;
-        };
-    }
     YamlNode YamlNode::operator[](std::string const &obj)
     {
         /**
@@ -49,17 +22,32 @@ namespace YamlParser
              * 
              * 
             * */
+        if (this->getNodeType() == YamlNodeType::SCALAR)
+        {
+            throw YamlException("Unable to index type SCALAR");
+        }
+
+        if (is_number(obj))
+        {
+            // we have to index a VECTOR
+            return this->value->_collection->at(stoi(obj));
+        }
+        else
+        {
+            // we have to index a MAP
+            return this->value->_map->lower_bound(obj)->second;
+        }
     }
 
     YamlNode YamlNode::operator=(std::string const &obj)
     {
         if (this->getNodeType() == YamlNodeType::MAP)
         {
-            throw VectorNodeAssignmentError();
+            throw YamlException("Unable to assign type SCALAR to type MAP");
         }
         else if (this->getNodeType() == YamlNodeType::VECTOR)
         {
-            throw MapNodeAssignmentError();
+            throw YamlException("Unable to assign type SCALAR to type VECTOR");
         }
         /** ONLY FOR SCALARS
              * if map or collection, it should free up the map or collection and
@@ -67,10 +55,12 @@ namespace YamlParser
              * 
              * IF anything else, throw error
              * */
-    }
-    YamlNode YamlNode::getChildren()
-    {
-        // return this->value;
+        YamlNode node;
+        node.value->scalar = obj;
+        return node;
     }
 
+    // YamlNode::YamlNode(){
+    //     value = nullptr;
+    // }
 } // namespace YamlParser
