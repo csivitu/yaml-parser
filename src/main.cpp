@@ -27,9 +27,9 @@ int main()
     std::cout << "main\n";
 
     // std::string str = "Hello World";
-    YamlParser::YamlNode node = "Hello World";
+    std::cout << "main\n";
 
-    node = yaml.parse();
+   YamlParser::YamlNode node("Hello World");
 
     std::cout << "main\n";
 

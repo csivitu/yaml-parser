@@ -6,12 +6,22 @@ namespace YamlParser
 
     YamlParser::YamlNodeType YamlParser::YamlNode::getNodeType()
     {
+        std::cout << "scalar is " << this->value->scalar << std::endl;
         if (this->value->_map != nullptr)
+        {
+            std::cout << "map\n";
             return YamlNodeType::MAP;
+        }
         else if (this->value->_collection != nullptr)
+        {
+            std::cout << "collection\n";
             return YamlNodeType::VECTOR;
-        else
+        }
+        else if (this->value->scalar != "")
+        {
+            std::cout << "scalar\n";
             return YamlNodeType::SCALAR;
+        }
     }
     YamlNode YamlNode::operator[](std::string const &obj)
     {
@@ -38,9 +48,15 @@ namespace YamlParser
             return this->value->_map->lower_bound(obj)->second;
         }
     }
-
+    YamlNode::YamlNode(std::string const &obj)
+    {
+         value = std::shared_ptr<_nodeValue>(new _nodeValue);
+        (*this) = obj;
+        // this->value->scalar = obj;
+    }
     void YamlNode::operator=(std::string const &obj)
     {
+        std::cout << "in =" << std::endl;
         if (this->getNodeType() == YamlNodeType::MAP)
         {
             throw YamlException("Unable to assign type SCALAR to type MAP");
@@ -49,6 +65,8 @@ namespace YamlParser
         {
             throw YamlException("Unable to assign type SCALAR to type VECTOR");
         }
+        std::cout << "in =" << std::endl;
+
         /** ONLY FOR SCALARS
              * if map or collection, it should free up the map or collection and
              * assign the scalar 
@@ -60,9 +78,12 @@ namespace YamlParser
         this->value->scalar = obj;
         // return node;
     }
-   
 
-    // YamlNode::YamlNode(){
-    //     value = nullptr;
-    // }
+    YamlNode::YamlNode()
+    {
+        // {   std::shared_ptr<_nodeValue> x (new _nodeValue);
+        //     value = std::move(x);
+        value = std::shared_ptr<_nodeValue>(new _nodeValue);
+    }
+
 } // namespace YamlParser
