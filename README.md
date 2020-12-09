@@ -61,7 +61,6 @@ Here's a blank template to get started:
 
 * [C++]()
 * [CMake](https://cmake.org/)
-* []()
 
 
 
@@ -101,10 +100,17 @@ make && sudo make install
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
+#### Windows
+Set the Visual Visual Studio include directory for ``headers`` to ``include/``
+Set the Visual Studio Linker Include directory to ``directory`` and in the Linker Input libraries, add ``libyaml-parser.lib``
 _For more examples, please refer to the [Documentation](https://example.com)_
 
+#### Linux
+``sudo make install`` will have installed the necessary header files into ``/usr/lib/x86_64-linux-gnu`` , so you can refer to the header files as follow : 
+```c++
+#include <YamlParser.hpp>
+```
 
 
 <!-- ROADMAP -->

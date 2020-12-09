@@ -16,3 +16,10 @@ Compile with
 ```bash
 g++ main.cpp -lyaml-parser
 ```
+
+Basic Usage
+```c++
+// Initialize YamlNode with type SCALAR
+   YamlParser::YamlNode node("Hello World");
+
+```
