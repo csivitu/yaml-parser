@@ -81,8 +81,6 @@ namespace YamlParser
 
     YamlNode::YamlNode()
     {
-        // {   std::shared_ptr<_nodeValue> x (new _nodeValue);
-        //     value = std::move(x);
         value = std::shared_ptr<_nodeValue>(new _nodeValue);
     }
 

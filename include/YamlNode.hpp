@@ -43,9 +43,9 @@ namespace YamlParser
             _collection = nullptr;
             scalar = "s";
         }
-        // _nodeValue(const _nodeValue &) = delete;
-        // _nodeValue &operator=(const _nodeValue &) = delete;
-        // ~_nodeValue() = default;
+        _nodeValue(const _nodeValue &) = delete;
+        _nodeValue &operator=(const _nodeValue &) = delete;
+        ~_nodeValue() = default;
 
         std::shared_ptr<std::map<std::string, YamlNode>> _map;
         std::shared_ptr<std::vector<YamlNode>> _collection;
