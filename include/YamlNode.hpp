@@ -4,6 +4,7 @@
 #include <map>
 #include <string>
 #include <memory>
+#include "YamlException.hpp"
 namespace YamlParser
 {
     class _nodeValue;
@@ -20,14 +21,17 @@ namespace YamlParser
     {
     private:
     public:
+        void operator=(std::string const &obj);
         std::shared_ptr<_nodeValue> value;
         // _nodeValue *value;
 
         YamlNode operator[](std::string const &obj);
 
-        YamlNode operator=(std::string const &obj);
+        // YamlNode operator=(const char* obj);
 
-        inline YamlNodeType getNodeType();
+        
+
+         YamlNodeType getNodeType();
     };
 
     class _nodeValue

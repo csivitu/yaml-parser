@@ -1,7 +1,5 @@
 #pragma once
 
-#ifndef YAML_PARSER_H
-#define YAML_PARSER_H
 
 #include <iostream>
 #include <fstream>
@@ -20,7 +18,7 @@ namespace YamlParser
         YamlParser(const char *_fileName, int indentation = 2);
         ~YamlParser();
         bool getValidationStatus();
-        void parse();
+        YamlNode parse();
 
         //  TODO: getDocuments() that returns a vector<YamlCollection>
 
@@ -36,5 +34,3 @@ namespace YamlParser
     };
 
 } // namespace YamlParser
-
-#endif

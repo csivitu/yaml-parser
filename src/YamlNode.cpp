@@ -4,7 +4,7 @@
 namespace YamlParser
 {
 
-    inline YamlParser::YamlNodeType YamlParser::YamlNode::getNodeType()
+    YamlParser::YamlNodeType YamlParser::YamlNode::getNodeType()
     {
         if (this->value->_map != nullptr)
             return YamlNodeType::MAP;
@@ -39,7 +39,7 @@ namespace YamlParser
         }
     }
 
-    YamlNode YamlNode::operator=(std::string const &obj)
+    void YamlNode::operator=(std::string const &obj)
     {
         if (this->getNodeType() == YamlNodeType::MAP)
         {
@@ -55,10 +55,12 @@ namespace YamlParser
              * 
              * IF anything else, throw error
              * */
-        YamlNode node;
-        node.value->scalar = obj;
-        return node;
+        // YamlNode node;
+        // node.value->scalar = obj;
+        this->value->scalar = obj;
+        // return node;
     }
+   
 
     // YamlNode::YamlNode(){
     //     value = nullptr;
