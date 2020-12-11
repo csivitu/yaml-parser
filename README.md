@@ -82,7 +82,7 @@ This is an example of how to list things you need to use the software and how to
 ```sh
 git clone https://github.com/csivitu/yaml-parser.git
 ```
-2. Craete a ``build`` folder
+2. Create a ``build`` folder
 ```sh
 mkdir build && cd build
 ```
@@ -102,8 +102,10 @@ make && sudo make install
 
 
 #### Windows
-Set the Visual Visual Studio include directory for ``headers`` to ``include/``
-Set the Visual Studio Linker Include directory to ``directory`` and in the Linker Input libraries, add ``libyaml-parser.lib``
+Go to Project settings in your Visual Studio C++ project.
+Under VC++ Directories, set the Visual Studio Include directory for ``headers`` to ``include/``.
+Set the Visual Studio Linker Include directory to ``directory`` (path to ``.lib`` file generated after building the project). 
+Under Linker, in the Linker Input libraries, add ``libyaml-parser.lib``.
 _For more examples, please refer to the [Documentation](https://example.com)_
 
 #### Linux
