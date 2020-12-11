@@ -6,20 +6,16 @@ namespace YamlParser
 
     YamlParser::YamlNodeType YamlParser::YamlNode::getNodeType()
     {
-        std::cout << "scalar is " << this->value->scalar << std::endl;
         if (this->value->_map != nullptr)
         {
-            std::cout << "map\n";
             return YamlNodeType::MAP;
         }
         else if (this->value->_collection != nullptr)
         {
-            std::cout << "collection\n";
             return YamlNodeType::VECTOR;
         }
-        else if (this->value->scalar != "")
+        else
         {
-            std::cout << "scalar\n";
             return YamlNodeType::SCALAR;
         }
     }
