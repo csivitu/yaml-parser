@@ -29,7 +29,7 @@ int main()
     // std::string str = "Hello World";
     std::cout << "main\n";
 
-   YamlParser::YamlNode node("Hello World");
+   YamlParser::YamlNode node = "Hello World";
 
     std::cout << "main\n";
 

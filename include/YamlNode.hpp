@@ -26,19 +26,22 @@ namespace YamlParser
         // _nodeValue *value;
 
         YamlNode(std::string const &obj);
+        YamlNode(const char *);
         YamlNode operator[](std::string const &obj);
+        // friend ostream &operator<<(ostream &os, const A &obj)
 
+        friend std::ostream &operator<<(std::ostream &os, const YamlNode &obj);
         // YamlNode operator=(const char* obj);
 
-        
         YamlNode();
-         YamlNodeType getNodeType();
+        YamlNodeType getNodeType();
     };
 
     class _nodeValue
     {
     public:
-        explicit _nodeValue(){
+        explicit _nodeValue()
+        {
             _map = nullptr;
             _collection = nullptr;
             scalar = "s";

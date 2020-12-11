@@ -50,7 +50,7 @@ namespace YamlParser
     }
     YamlNode::YamlNode(std::string const &obj)
     {
-         value = std::shared_ptr<_nodeValue>(new _nodeValue);
+        value = std::shared_ptr<_nodeValue>(new _nodeValue);
         (*this) = obj;
         // this->value->scalar = obj;
     }
@@ -78,10 +78,37 @@ namespace YamlParser
         this->value->scalar = obj;
         // return node;
     }
+    YamlNode::YamlNode(const char *rhs)
+    {
 
+        value = std::shared_ptr<_nodeValue>(new _nodeValue);
+        // (*this) = obj;
+        std::string temp = rhs;
+        this->value->scalar = temp;
+    }
     YamlNode::YamlNode()
     {
         value = std::shared_ptr<_nodeValue>(new _nodeValue);
     }
-
+    std::ostream &operator<<(std::ostream &os, YamlNode &obj)
+    {
+        if (obj.getNodeType() == YamlNodeType::MAP)
+        {
+            throw YamlException("Invalid operation '<<' on YamlNodeType MAP");
+        }
+        else if (obj.getNodeType() == YamlNodeType::VECTOR)
+        {
+            std::vector<YamlNode> vec = *(obj.value->_collection);
+            for (auto it : vec)
+            {
+                os << it.value << " ";
+            }
+            return os;
+        }
+        else
+        {
+            os << obj.value->scalar;
+            return os;
+        }
+    }
 } // namespace YamlParser
