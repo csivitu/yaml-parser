@@ -30,7 +30,7 @@ namespace YamlParser
         YamlNode operator[](std::string const &obj);
         // friend ostream &operator<<(ostream &os, const A &obj)
 
-        friend std::ostream &operator<<(std::ostream &os, const YamlNode &obj);
+        friend std::ostream &operator<<(std::ostream &os, YamlNode &obj);
         // YamlNode operator=(const char* obj);
 
         YamlNode();
