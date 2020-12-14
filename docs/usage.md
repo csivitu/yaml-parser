@@ -39,8 +39,6 @@ You can also interop between `YamlParser::YamlNode` and `std::string`
     std::vector<std::string> vec = {"1", "2", "3"};
     std::vector<YamlParser::YamlNode> v;
 
-    YamlParser::YamlNode t;
-
     for (auto x : vec)
     {
         v.push_back(x);
