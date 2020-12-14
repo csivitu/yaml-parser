@@ -50,6 +50,22 @@ namespace YamlParser
         (*this) = obj;
         // this->value->scalar = obj;
     }
+
+    template <class T>
+    YamlNode::operator std::vector<T>() const
+    {
+        return this->value->_collection;
+    }
+
+    void YamlNode::operator=(const char *rhs)
+    {
+        std::string temp = rhs;
+        this->value->scalar = temp;
+    }
+    YamlNode::operator std::string() const
+    {
+        return this->value->scalar;
+    }
     void YamlNode::operator=(std::string const &obj)
     {
         std::cout << "in =" << std::endl;
@@ -74,6 +90,25 @@ namespace YamlParser
         this->value->scalar = obj;
         // return node;
     }
+    _nodeValue::_nodeValue(std::vector<YamlNode> obj)
+    {
+        _map = nullptr;
+        scalar = "";
+        _collection = std::shared_ptr<std::vector<YamlNode>>(&obj);
+        
+    }
+    YamlNode::YamlNode(std::vector<std::string> obj)
+    {   
+        
+        for(auto x:obj){
+
+        }
+        value = std::shared_ptr<_nodeValue>(new _nodeValue);
+        value->_map = nullptr;
+        value->_collection = nullptr;
+        // value->_collection = std::shared_ptr<std::vector<YamlNode>>;
+    }
+
     YamlNode::YamlNode(const char *rhs)
     {
 

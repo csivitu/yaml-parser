@@ -22,8 +22,16 @@ namespace YamlParser
     private:
     public:
         void operator=(std::string const &obj);
+        void operator=(const char *rhs);
+        operator std::string() const;
+
+        template <class T>
+        operator std::vector<T>() const;
+
         std::shared_ptr<_nodeValue> value;
         // _nodeValue *value;
+        
+        YamlNode(std::vector<std::string> obj);
 
         YamlNode(std::string const &obj);
         YamlNode(const char *);
@@ -46,6 +54,7 @@ namespace YamlParser
             _collection = nullptr;
             scalar = "s";
         }
+        _nodeValue(std::vector<YamlNode> obj);
         _nodeValue(const _nodeValue &) = delete;
         _nodeValue &operator=(const _nodeValue &) = delete;
         ~_nodeValue() = default;
