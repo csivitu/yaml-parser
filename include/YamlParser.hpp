@@ -12,6 +12,10 @@
 // #include "YamlUtil.hpp"
 namespace YamlParser
 {
+    enum class ParserOptions{
+        VECTOR_DECLARATION,
+        BLOCK_DECLARATION,
+    };
     class YamlParser
     {
     public:
@@ -26,6 +30,7 @@ namespace YamlParser
         std::ifstream fin;
         bool documentStatus;
         unsigned int indentation_spacing;
+
 
         
         bool fileExists(const char *fileName);

@@ -43,7 +43,7 @@ set(ARCHIVE_OUTPUT_PATH "${CMAKE_BINARY_DIR/lib}")
 
 if(UNIX)
     message("This is a ${CMAKE_SYSTEM_NAME} system")
-    set(CMAKE_INSTALL_PREFIX /usr/lib/x86_64-linux-gnu)
+    set(CMAKE_INSTALL_PREFIX /usr/include )
     message( STATUS "Setting Installation location to ${CMAKE_INSTALL_PREFIX}")
 elseif(WIN32)
     message("This is a Windows System")
@@ -51,7 +51,9 @@ endif()
 
 
 install(TARGETS yaml-parser
+    EXPORT yaml-parser
     LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}
-    PUBLIC_HEADER DESTINATION /usr/include
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_PREFIX}
     )
 
+install(EXPORT yaml-parser DESTINATION ${CMAKE_INSTALL_PREFIX})

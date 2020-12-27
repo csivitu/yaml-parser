@@ -33,27 +33,21 @@ namespace YamlParser
         int collections = 0;
 
         std::cout << "parsing\n";
+        bool inNode = false;
         YamlNode yn;
 
         while (std::getline(fin, line))
         {
 
             const std::string s = rtrim(line);
-            
+
             if (s.size() == 0 || s.at(0) == '#')
                 continue;
 
-            switch (s.at(s.size() - 1))
+            if (s.at(0) == '-' || inNode)
             {
-            case ':':
-                std::cout << "Block indent: " << s.substr(0, s.find_first_of(":")) << "\n";
-                break;
-
-            default:
-
-                // std::cout << "size: " << vec.size() << "\n";
-
-                break;
+                //
+                std::cout << s << "\n";
             }
         }
         try
