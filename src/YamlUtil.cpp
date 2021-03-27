@@ -48,4 +48,11 @@ namespace YamlParser
             ++it;
         return !s.empty() && it == s.end();
     }
+
+    std::string fileToString(const std::string &s)
+    {
+        std::ifstream t("file.txt");
+        return std::string((std::istreambuf_iterator<char>(t)),
+                           std::istreambuf_iterator<char>());
+    }
 } // namespace YamlParser
